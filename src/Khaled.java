@@ -33,7 +33,7 @@ public class Khaled {
     }
 
 
-    public Khaled(String name) {
+    public Khaled(String name, char key) {
         this.image = name + ".png";
         this.imageGrey = name + "grey.png";
         this.sound = name + ".wav";
@@ -53,8 +53,51 @@ public class Khaled {
         greyKhaledLabel = new JLabel(greyKhaledIcon);
 
         //BUTTON
-        button = new JButton( name + " on");
-        button.addActionListener( new ActionListener() {
+        button = new JButton( name + " " + key);
+
+        Action Execute = new AbstractAction() {
+            public void actionPerformed(ActionEvent pressed) {
+                //INSERT ACTION
+                greyKhaledLabel.setIcon(khaledIcon);
+
+                try
+                {
+                    File velvetPath = new File(sound);
+
+                    if(velvetPath.exists())
+                    {
+
+                        //setup and play audio
+                        AudioInputStream velvetInput = AudioSystem.getAudioInputStream(velvetPath);
+                        Clip velvetClip = AudioSystem.getClip();
+                        long length = velvetClip.getMicrosecondLength();
+                        velvetClip.open(velvetInput);
+                        velvetClip.start();
+
+
+                        LineListener listener = new LineListener() {
+                            public void update(LineEvent event) {
+                                if (event.getType() != LineEvent.Type.STOP) {
+                                    return;
+                                }
+
+                                greyKhaledLabel.setIcon(greyKhaledIcon);
+                            }
+                        };
+                        velvetClip.addLineListener(listener);
+
+                    }
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
+            }
+        };
+        button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key), "pressed");
+        button.getActionMap().put("pressed", Execute);
+
+        /*button.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent r) {
 
                 greyKhaledLabel.setIcon(khaledIcon);
@@ -84,12 +127,7 @@ public class Khaled {
                             }
                         };
                         velvetClip.addLineListener(listener);
-                        /*//change icon when audio is done
-                        while(velvetClip.getMicrosecondLength() != velvetClip.getMicrosecondPosition())
-                        {
 
-                        }
-                        greyKhaledLabel.setIcon(greyKhaledIcon);*/
                     }
                 }
                 catch(Exception e)
@@ -97,7 +135,7 @@ public class Khaled {
                     System.out.println(e);
                 }
             }
-        });
+        });*/
     }
 
 
