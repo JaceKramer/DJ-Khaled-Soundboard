@@ -9,9 +9,9 @@ public class Soundboard extends JPanel{
         ArrayList<Khaled> khaleds= new ArrayList<Khaled>();
 
         //Declare Khaleds
-        khaleds.add(new Khaled("asparagus"));
-        khaleds.add(new Khaled("tennisball"));
-        khaleds.add(new Khaled("velvet"));
+        khaleds.add(new Khaled("asparagus", '1'));
+        khaleds.add(new Khaled("tennisball", '2'));
+        khaleds.add(new Khaled("velvet", '3'));
 
 
         //Adds each khaled to the soundboard panel
