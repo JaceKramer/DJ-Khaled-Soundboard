@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 
 import static java.lang.Thread.currentThread;
@@ -98,8 +100,51 @@ public class Khaled {
                 }
             }
         });
+
+        // KHALED IMAGE AS BUTTON
+        greyKhaledLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                greyKhaledLabel.setIcon(khaledIcon);
+
+                try
+                {
+                    File velvetPath = new File(sound);
+
+                    if(velvetPath.exists())
+                    {
+
+                        //setup and play audio
+                        AudioInputStream velvetInput = AudioSystem.getAudioInputStream(velvetPath);
+                        Clip velvetClip = AudioSystem.getClip();
+                        long length = velvetClip.getMicrosecondLength();
+                        velvetClip.open(velvetInput);
+                        velvetClip.start();
+
+
+                        LineListener listener = new LineListener() {
+                            public void update(LineEvent event) {
+                                if (event.getType() != LineEvent.Type.STOP) {
+                                    return;
+                                }
+
+                                greyKhaledLabel.setIcon(greyKhaledIcon);
+                            }
+                        };
+                        velvetClip.addLineListener(listener);
+                        /*//change icon when audio is done
+                        while(velvetClip.getMicrosecondLength() != velvetClip.getMicrosecondPosition())
+                        {
+
+                        }
+                        greyKhaledLabel.setIcon(greyKhaledIcon);*/
+                    }
+                }
+                catch(Exception w)
+                {
+                    System.out.println(w);
+                }
+            }
+        });
     }
-
-
 
 }
