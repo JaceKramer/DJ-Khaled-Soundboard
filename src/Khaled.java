@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
 
 public class Khaled {
@@ -73,6 +74,16 @@ public class Khaled {
                         velvetClip.start();
 
 
+                        LineListener listener = new LineListener() {
+                            public void update(LineEvent event) {
+                                if (event.getType() != LineEvent.Type.STOP) {
+                                    return;
+                                }
+
+                                greyKhaledLabel.setIcon(greyKhaledIcon);
+                            }
+                        };
+                        velvetClip.addLineListener(listener);
                         /*//change icon when audio is done
                         while(velvetClip.getMicrosecondLength() != velvetClip.getMicrosecondPosition())
                         {
