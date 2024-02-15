@@ -37,6 +37,7 @@ public class TeamPanel extends JPanel {
         Image newa = imagea.getScaledInstance(290, 290, Image.SCALE_SMOOTH);
         khaledIcons[0] = new ImageIcon(newa);
         khaledLabels[0] = new JLabel(khaledIcons[0]);
+
         ImageIcon vf = new ImageIcon("velvet.png");
         Image imagev = vf.getImage();
         Image newv = imagev.getScaledInstance(290, 290, Image.SCALE_SMOOTH);
