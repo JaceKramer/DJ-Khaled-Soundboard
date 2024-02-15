@@ -29,10 +29,4 @@ public class Soundboard extends JPanel{
         this.setPreferredSize(new Dimension(900, 600));
         this.setBackground(Color.LIGHT_GRAY);
     }
-
-
-
-
-
-
 }
