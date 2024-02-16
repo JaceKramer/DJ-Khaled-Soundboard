@@ -12,6 +12,14 @@ public class Soundboard extends JPanel{
         khaleds.add(new Khaled("asparagus"));
         khaleds.add(new Khaled("tennisball"));
         khaleds.add(new Khaled("velvet"));
+        khaleds.add(new Khaled("budget"));
+        khaleds.add(new Khaled("cappuccino"));
+        khaleds.add(new Khaled("chandelier"));
+        khaleds.add(new Khaled("gatorade"));
+        khaleds.add(new Khaled("goddid"));
+        khaleds.add(new Khaled("golf"));
+        khaleds.add(new Khaled("letsgolf"));
+        khaleds.add(new Khaled("opportunity"));
 
 
         //Adds each khaled to the soundboard panel
@@ -26,7 +34,7 @@ public class Soundboard extends JPanel{
 
 
         //set dimensions and style of soundboard panel itself
-        this.setPreferredSize(new Dimension(900, 600));
+        this.setPreferredSize(new Dimension(1500, 2400));
         this.setBackground(Color.LIGHT_GRAY);
     }
 }

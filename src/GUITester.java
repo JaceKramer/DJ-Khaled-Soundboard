@@ -8,12 +8,12 @@ public class GUITester {
         JFrame testFrame = new JFrame();
         testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel displayPanel = new JPanel();
-        displayPanel.add(new TeamPanel());
+        /*JPanel displayPanel = new JPanel();
+        displayPanel.add(new TeamPanel());*/
 
-        testFrame.getContentPane().add(displayPanel);
+        /*testFrame.getContentPane().add(displayPanel);
         testFrame.pack();
-        testFrame.setVisible(true);
+        testFrame.setVisible(true);*/
 
         //Test code testing khaled and soundboard class
         JFrame coolFrame = new JFrame();
